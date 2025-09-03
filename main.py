@@ -53,7 +53,11 @@ def deploy_to_agent_engine():
     logger.info("Creating and deploying the agent engine... This may take several minutes.")
     remote_app = reasoning_engines.create(
         reasoning_engine=app,
-        requirements=["google-cloud-aiplatform[adk,agent_engines]"],
+        # Add the new dependency here
+        requirements=[
+            "google-cloud-aiplatform[adk,agent_engines]",
+            "google-cloud-bigquery"
+            ],
         display_name="TXN Insights Agent",
         description="Agent for analyzing financial transaction data."
     )
